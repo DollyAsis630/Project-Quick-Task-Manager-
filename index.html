@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quick Task Manager</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sidebar">
+<div class="logo"><span>⚡</span><h1>Quick Task Manager</h1></div>
+<div class="stats">
+<div><span id="totalTasks">0</span><small>Total</small></div>
+<div><span id="todoCount">0</span><small>To Do</small></div>
+<div><span id="doneCount">0</span><small>Done</small></div>
+</div>
+<a href="#" class="menu-item active" data-page="tasks">📋 Tasks</a>
+<a href="#" class="menu-item" data-page="board">🎨 Kanban</a>
+<a href="#" class="menu-item" data-page="team">👥 Team</a>
+</div>
+
+<div class="main">
+<div class="topbar">
+<input id="searchInput" class="input" placeholder="Search tasks...">
+<select id="statusFilter" class="input">
+<option value="">All Status</option>
+<option value="To Do">To Do</option>
+<option value="In Progress">In Progress</option>
+<option value="Done">Done</option>
+</select>
+</div>
+
+<div class="page active" id="tasksPage">
+<div class="card">
+<h2>➕ New Task</h2>
+<input id="taskTitle" class="input" placeholder="Task title">
+<input id="taskDesc" class="input" placeholder="Description">
+<div class="row">
+<select id="taskPriority" class="input">
+<option value="High">High</option>
+<option value="Medium">Medium</option>
+<option value="Low">Low</option>
+</select>
+<button class="btn" onclick="addTask()">Add Task</button>
+</div>
+</div>
+<div class="card">
+<h2>📋 Tasks (<span id="taskCount">0</span>)</h2>
+<div id="taskList"></div>
+</div>
+</div>
+
+<div class="page" id="boardPage">
+<div class="kanban" id="kanbanBoard"></div>
+</div>
+
+<div class="page" id="teamPage">
+<div class="card">
+<h2>➕ Add Team Member</h2>
+<input id="memberName" class="input" placeholder="Name">
+<select id="memberRole" class="input">
+<option value="Designer">Designer</option>
+<option value="Developer">Developer</option>
+<option value="Tester">Tester</option>
+<option value="Manager">Manager</option>
+</select>
+<button class="btn" onclick="addMember()">Add Member</button>
+</div>
+<div class="card">
+<h2>👥 Team Members (<span id="memberCount">0</span>)</h2>
+<div id="teamGrid" class="team-grid"></div>
+</div>
+</div>
+</div>
+
+<div id="modal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal()">×</span>
+<h2 id="modalTitle"></h2>
+<p id="modalDesc"></p>
+<div class="tags">
+<span id="modalPriority" class="tag"></span>
+<span id="modalStatus" class="tag"></span>
+</div>
+<button class="btn btn-danger" onclick="deleteCurrentTask()">Delete</button>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
